@@ -1,5 +1,6 @@
-
-
+/**
+ * Holds the allocated feasible solution
+ */
 class AllocatedCell {
 
     Integer supply
@@ -12,11 +13,5 @@ class AllocatedCell {
     }
 
     @Override
-    String toString() {
-        Formatter f = new Formatter();
-        f.format("x[supply:%d,demand:%d]=%f", this.supply +1, this.demand +1, this.value);
-        return f.toString();
-    }
-
-
+    String toString() { "cell[supply:${supply+1}, demand:${demand+1}] = $value" }
 }
