@@ -1,5 +1,6 @@
-cell[supply:2, demand:2] = 30.0
-cell[supply:1, demand:1] = 20.0
-cell[supply:2, demand:3] = 5.0
-cell[supply:1, demand:3] = 5.0
-Total costs (Z min function) : 180.0
+cell[supply:2, demand:1] = 1000.0
+cell[supply:1, demand:3] = 1500.0
+cell[supply:2, demand:2] = 1500.0
+cell[supply:3, demand:3] = 1200.0
+cell[supply:3, demand:2] = 800.0
+Total costs (Z min function) : 45100.0

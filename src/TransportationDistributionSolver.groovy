@@ -70,12 +70,6 @@ class TransportationDistributionSolver {
         isAllocated = new boolean[suppliersNumber][consumersNumber]
     }
 
-    def cleanAllocationSolution() {
-        suppliersNumber.times { supplier ->
-            consumersNumber.times { consumer -> isAllocated[supplier][consumer] = false }
-        }
-    }
-
     def setSupplierCapacity(double value, int index){
         suppliers[index] = value
     }
@@ -96,7 +90,6 @@ class TransportationDistributionSolver {
         double min
         //feasible solutions counter
         int counter = 0
-        cleanAllocationSolution()
         consumersNumber.times { consumer ->
             suppliersNumber.times { supplier ->
                 if (!isAllocated[supplier][consumer]) {
@@ -121,7 +114,6 @@ class TransportationDistributionSolver {
      * @return
      */
     def solveWithLeastCostRule() {
-        cleanAllocationSolution()
         AllocatedCell minCost = new AllocatedCell()
         //this iteration sets cell values according to the lest cost
         (suppliersNumber + consumersNumber -1).times { counter ->
@@ -181,10 +173,12 @@ class TransportationDistributionSolver {
     }
 
     static void main(String[] args) throws IOException {
-        TransportationDistributionSolver solver = loadFromTextFile(new File('input_data.txt'))
-        solver.solveWithLeastCostRule()
-        solver.writeSolutionToFile(new File('least_cost_output.txt'))
-        solver.solveWithNorthWestCorner()
-        solver.writeSolutionToFile(new File('north_west_corner_output.txt'))
+        final File inputFile = new File('input_data.txt')
+        TransportationDistributionSolver leastCostSolver = loadFromTextFile inputFile
+        TransportationDistributionSolver northWestSolver = loadFromTextFile inputFile
+        leastCostSolver.solveWithLeastCostRule()
+        leastCostSolver.writeSolutionToFile(new File('least_cost_output.txt'))
+        northWestSolver.solveWithNorthWestCorner()
+        northWestSolver.writeSolutionToFile(new File('north_west_corner_output.txt'))
     }
 }
