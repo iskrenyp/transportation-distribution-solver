@@ -181,10 +181,10 @@ class TransportationDistributionSolver {
     }
 
     static void main(String[] args) throws IOException {
-        TransportationDistributionSolver solver = loadFromTextFile(new File('src/input_data.txt'))
+        TransportationDistributionSolver solver = loadFromTextFile(new File('input_data.txt'))
         solver.solveWithLeastCostRule()
-        solver.writeSolutionToFile(new File('src/least_cost_output.txt'))
+        solver.writeSolutionToFile(new File('least_cost_output.txt'))
         solver.solveWithNorthWestCorner()
-        solver.writeSolutionToFile(new File('src/north_west_corner_output.txt'))
+        solver.writeSolutionToFile(new File('north_west_corner_output.txt'))
     }
 }
